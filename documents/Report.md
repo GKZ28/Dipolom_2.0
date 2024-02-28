@@ -10,7 +10,10 @@
 * Успешных: 28 (73,69%)
 * Неуспешных: 10 (26,31%)
 
-![](./documents/images/Graphs.jpg)
+![Overview](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/images/Overview.jpg?raw=true)
+![Positive](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/images/Suites%20Positive.jpg?raw=true)
+![Negative](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/images/Suites%20Negative.jpg?raw=true)
+![Graphs](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/images/Graphs.jpg?raw=true)
 
 ## Общие рекомендации.
 

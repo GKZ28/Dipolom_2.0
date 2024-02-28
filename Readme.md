@@ -1,8 +1,8 @@
 # Дипломный проект. Гиоргадзе Константин.
 
-- [Задание](https://github.com/netology-code/qa-diploma)
-- [План тестирования](ссылка на план)
-- [Отчет](ссылка на отчет)
+- [**Задание**](https://github.com/netology-code/qa-diploma)
+- [**План тестирования**](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/Plan.md)
+- [**Отчет**](ссылка на отчет)
 
 ## Начало работы и запуск проекта
 

@@ -2,7 +2,7 @@
 
 - [**Задание**](https://github.com/netology-code/qa-diploma)
 - [**План тестирования**](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/Plan.md)
-- [**Отчет**](ссылка на отчет)
+- [**Отчет**](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/Report.md)
 
 ## Начало работы и запуск проекта
 

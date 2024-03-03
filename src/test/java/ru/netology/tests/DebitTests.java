@@ -20,7 +20,7 @@ public class DebitTests {
 
     @BeforeEach
     void openForTests() {
-        System.setProperty("selenide.headless", "true");
+       // System.setProperty("selenide.headless", "true");
         open(url);
     }
 
@@ -49,8 +49,8 @@ public class DebitTests {
         var approvedInfo = dataHelper.approvedCardInfo();
         payForm.fillFormAndSend(approvedInfo);
         payForm.checkingOperationIsApproved();
-        String dataSQLPayment = sqlHelper.statusOfPayment();
-        assertEquals("APPROVED", dataSQLPayment);
+        var dataSQLPayment = SQLHelper.getDebitInfo();
+        assertEquals("APPROVED", dataSQLPayment.getStatus());
     }
 
     @Test
@@ -60,8 +60,8 @@ public class DebitTests {
         var declinedInfo = dataHelper.declinedCardInfo();
         payForm.fillFormAndSend(declinedInfo);
         payForm.checkingErrorNotification();
-        String dataSQLPayment = sqlHelper.statusOfPayment();
-        assertEquals("DECLINED", dataSQLPayment);
+        var dataSQLPayment = SQLHelper.getDebitInfo();
+        assertEquals("DECLINED", dataSQLPayment.getStatus());
     }
 
     @Test
@@ -71,9 +71,10 @@ public class DebitTests {
         var approvedInfo = dataHelper.approvedCardInfo();
         payForm.fillFormAndSend(approvedInfo);
         payForm.checkingOperationIsApproved();
-        String dataSQLPayAmount = sqlHelper.statusOfAmount();
-        assertEquals("45000", dataSQLPayAmount);
+        var dataSQLPayAmount = SQLHelper.getDebitInfo();
+        assertEquals(45000 * 100, dataSQLPayAmount.getAmount());
     }
+
 
     @Test
     @DisplayName("Test: Checking Invalid Card Number / DEBIT")

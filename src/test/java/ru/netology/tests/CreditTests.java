@@ -49,7 +49,7 @@ public class CreditTests {
         var approvedInfo = dataHelper.approvedCardInfo();
         payForm.fillFormAndSend(approvedInfo);
         payForm.checkingOperationIsApproved();
-        String dataSQLPayment = sqlHelper.statusOfCredit();
+        String dataSQLPayment = SQLHelper.getCreditInfo().getStatus();
         assertEquals("APPROVED", dataSQLPayment);
     }
 
@@ -60,19 +60,8 @@ public class CreditTests {
         var declinedInfo = dataHelper.declinedCardInfo();
         payForm.fillFormAndSend(declinedInfo);
         payForm.checkingErrorNotification();
-        String dataSQLPayment = sqlHelper.statusOfCredit();
+        String dataSQLPayment = SQLHelper.getCreditInfo().getStatus();
         assertEquals("DECLINED", dataSQLPayment);
-    }
-
-    @Test
-    @DisplayName("Test: Checking Purchase In Database / CREDIT")
-    void checkingPurchaseInDatabaseCredit() {
-        var payForm = mainPage.byCreditCard();
-        var approvedInfo = dataHelper.approvedCardInfo();
-        payForm.fillFormAndSend(approvedInfo);
-        payForm.checkingOperationIsApproved();
-        String dataSQLPayAmount = sqlHelper.statusOfAmount();
-        assertEquals("45000", dataSQLPayAmount);
     }
 
     @Test

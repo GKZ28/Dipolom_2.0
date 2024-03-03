@@ -3,6 +3,7 @@ package ru.netology.pages;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.Condition;
 import ru.netology.data.DataHelper;
+
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -28,7 +29,7 @@ public class Payment {
     private final SelenideElement wrongFormatAll = $(withText("Неверный формат"));
     private final SelenideElement requiredField = $(withText("Поле обязательно для заполнения"));
 
-    public void fillForm(DataHelper.cardInfo cardInfo) {
+    public void fillForm(DataHelper.CardInfo cardInfo) {
         fieldCardNumber.setValue(cardInfo.getCardNumber());
         fieldMonth.setValue(cardInfo.getMonth());
         fieldYear.setValue(cardInfo.getYear());
@@ -37,7 +38,7 @@ public class Payment {
         continueButton.click();
     }
 
-    public void fillFormAndSend(DataHelper.cardInfo cardInfo) {
+    public void fillFormAndSend(DataHelper.CardInfo cardInfo) {
         this.fillForm(cardInfo);
         requestSendButton.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
@@ -70,23 +71,4 @@ public class Payment {
         requiredField.shouldBe(Condition.visible);
     }
 
-    public void checkingInvalidCardNumber() {
-        fieldCardNumber.$("input__sub").shouldHave(text("Неверный формат"));
-    }
-
-    public void checkingInvalidMonthT() {
-        fieldMonth.$("input__sub").shouldHave(text("Неверный формат"));
-    }
-
-    public void checkingInvalidYearT() {
-        fieldYear.$("input__sub").shouldHave(text("Неверный формат"));
-    }
-
-    public void checkingInvalidOwnerT() {
-        fieldOwner.$("input__sub").shouldHave(text("Неверный формат"));
-    }
-
-    public void checkingInvalidCVVT() {
-        fieldCvv.$("input__sub").shouldHave(text("Неверный формат"));
-    }
 }

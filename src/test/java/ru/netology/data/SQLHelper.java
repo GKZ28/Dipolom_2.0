@@ -18,32 +18,20 @@ public class SQLHelper {
     }
 
     @SneakyThrows(SQLException.class)
-    public static String statusOfPayment() {
+    public static Debit getDebitInfo() {
         QueryRunner runner = new QueryRunner();
-        String payStatus = "SELECT status FROM payment_entity";
+        String query = "SELECT * FROM payment_entity";
         try (Connection connect = startConnection()) {
-            var paymentStatus = runner.query(connect, payStatus, new BeanHandler<>(Debit.class));
-            return paymentStatus.getStatus();
+            return runner.query(connect, query, new BeanHandler<>(Debit.class));
         }
     }
 
     @SneakyThrows(SQLException.class)
-    public static String statusOfCredit() {
+    public static Credit getCreditInfo() {
         QueryRunner runner = new QueryRunner();
-        String cStatus = "SELECT status FROM credit_request_entity";
+        String query = "SELECT * FROM credit_request_entity";
         try (Connection connect = startConnection()) {
-            var creditStatus = runner.query(connect, cStatus, new BeanHandler<>(Credit.class));
-            return creditStatus.getStatus();
-        }
-    }
-
-    @SneakyThrows(SQLException.class)
-    public static String statusOfAmount() {
-        QueryRunner runner = new QueryRunner();
-        String payAmount = "SELECT amount FROM payment_entity";
-        try (Connection connect = startConnection()) {
-            var paymentAmount = runner.query(connect, payAmount, new BeanHandler<>(Debit.class));
-            return paymentAmount.getAmount();
+            return runner.query(connect, query, new BeanHandler<>(Credit.class));
         }
     }
 }

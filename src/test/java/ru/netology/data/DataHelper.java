@@ -180,8 +180,4 @@ public class DataHelper {
         return new CardInfo(approvedCardNumber(), validMonth(), validYear(), validOwner(), invalidCvv());
     }
 
-    public static CardInfo emptyFields() {
-        return new CardInfo(emptyCardNumberValue(), emptyMonthValue(), emptyYearValue(),
-                emptyOwnerValue(), emptyCvvValue());
-    }
 }

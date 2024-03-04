@@ -71,7 +71,8 @@ public class DebitTests {
         payForm.fillFormAndSend(approvedInfo);
         payForm.checkingOperationIsApproved();
         var dataSQLPayAmount = SQLHelper.getDebitInfo();
-        assertEquals(45000 * 100, dataSQLPayAmount.getAmount());
+        int actualAmount = Integer.parseInt(dataSQLPayAmount.getAmount());
+        assertEquals(45000 * 100, actualAmount);
     }
 
 

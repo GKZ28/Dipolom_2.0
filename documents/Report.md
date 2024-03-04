@@ -4,15 +4,15 @@
 - Было проведено тестирование приложения для покупки тура с возможностью купить в кредит, либо без. С использованием двух баз данных.
 
 ## Количество тест-кейсов
-- Общее количество тест-кейсов - 38
+- Общее количество тест-кейсов - 37
 
 ## Процент успешных и не успешных тест-кейсов
-* Успешных: 28 (73,69%)
-* Неуспешных: 10 (26,31%)
+* Успешных: 31 (83,78%)
+* Неуспешных: 6 (16,22%)
 
-![Overview](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/images/Overview.jpg?raw=true)
-![Positive](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/images/Suites%20Positive.jpg?raw=true)
-![Negative](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/images/Suites%20Negative.jpg?raw=true)
+![Overview](https://d1.skrinshoter.ru/s/040324/vINWPTQl.jpg?view=1&name=%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82-04-03-2024%2021:30:57.jpg)
+![Credit](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/images/Suites%20Positive.jpg?raw=true)
+![Debit](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/images/Suites%20Negative.jpg?raw=true)
 ![Graphs](https://github.com/GKZ28/Dipolom_2.0/blob/main/documents/images/Graphs.jpg?raw=true)
 
 ## Общие рекомендации.

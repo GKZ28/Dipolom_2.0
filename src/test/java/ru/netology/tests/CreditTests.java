@@ -15,7 +15,7 @@ public class CreditTests {
 
     public final Main mainPage = new Main();
     public final DataHelper dataHelper = new DataHelper();
-    public final SQLHelper sqlHelper = new SQLHelper();
+  //  public final SQLHelper sqlHelper = new SQLHelper();
     public final String url = "http://localhost:8080";
 
     @BeforeEach

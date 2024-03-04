@@ -15,13 +15,13 @@ public class DebitTests {
 
     public final Main mainPage = new Main();
     public final DataHelper dataHelper = new DataHelper();
-    public final SQLHelper sqlHelper = new SQLHelper();
+   // public final SQLHelper sqlHelper = new SQLHelper();
     public final String url = "http://localhost:8080";
 
     @BeforeEach
     void openForTests() {
-       // System.setProperty("selenide.headless", "true");
-        open(url);
+       System.setProperty("selenide.headless", "true");
+       open(url);
     }
 
     @BeforeAll
@@ -49,8 +49,8 @@ public class DebitTests {
         var approvedInfo = dataHelper.approvedCardInfo();
         payForm.fillFormAndSend(approvedInfo);
         payForm.checkingOperationIsApproved();
-        var dataSQLPayment = SQLHelper.getDebitInfo();
-        assertEquals("APPROVED", dataSQLPayment.getStatus());
+        var dataSQLPayment = SQLHelper.getDebitInfo().getStatus();
+        assertEquals("APPROVED", dataSQLPayment);
     }
 
     @Test
@@ -60,8 +60,8 @@ public class DebitTests {
         var declinedInfo = dataHelper.declinedCardInfo();
         payForm.fillFormAndSend(declinedInfo);
         payForm.checkingErrorNotification();
-        var dataSQLPayment = SQLHelper.getDebitInfo();
-        assertEquals("DECLINED", dataSQLPayment.getStatus());
+        var dataSQLPayment = SQLHelper.getDebitInfo().getStatus();
+        assertEquals("DECLINED", dataSQLPayment);
     }
 
     @Test

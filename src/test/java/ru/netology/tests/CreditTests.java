@@ -24,7 +24,7 @@ public class CreditTests {
 
     @BeforeAll
     static void setUpAll() {
-        WebDriverManager.chromedriver().setup();
+       // WebDriverManager.chromedriver().setup();
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 

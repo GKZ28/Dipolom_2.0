@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CreditTests {
 
     public final Main mainPage = new Main();
-    public final DataHelper dataHelper = new DataHelper();
     public final String url = "http://localhost:8080";
 
     @BeforeEach
@@ -45,7 +44,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Approved Card / CREDIT")
     void checkingApprovedCardCredit() {
         var payForm = mainPage.byCreditCard();
-        var approvedInfo = dataHelper.approvedCardInfo();
+        var approvedInfo = DataHelper.approvedCardInfo();
         payForm.fillFormAndSend(approvedInfo);
         payForm.checkingOperationIsApproved();
         String dataSQLPayment = SQLHelper.getCreditInfo().getStatus();
@@ -56,7 +55,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Declined Card / CREDIT")
     void checkingDeclinedCardCredit() {
         var payForm = mainPage.byCreditCard();
-        var declinedInfo = dataHelper.declinedCardInfo();
+        var declinedInfo = DataHelper.declinedCardInfo();
         payForm.fillFormAndSend(declinedInfo);
         payForm.checkingErrorNotification();
         String dataSQLPayment = SQLHelper.getCreditInfo().getStatus();
@@ -67,7 +66,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Invalid Card Number / CREDIT")
     void checkingInvalidCardNumberCredit() {
         var payForm = mainPage.byCreditCard();
-        var invalidCardNumber = dataHelper.invalidCardNumberInfo();
+        var invalidCardNumber = DataHelper.invalidCardNumberInfo();
         payForm.fillFormAndSend(invalidCardNumber);
         payForm.checkingErrorNotification();
     }
@@ -76,7 +75,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Short Card Number / CREDIT")
     void checkingShortCardNumberCredit() {
         var payForm = mainPage.byCreditCard();
-        var shortCardNumber = dataHelper.shortCardNumberInfo();
+        var shortCardNumber = DataHelper.shortCardNumberInfo();
         payForm.fillForm(shortCardNumber);
         payForm.checkingWrongFormat();
     }
@@ -85,7 +84,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Empty Card Number / CREDIT")
     void checkingEmptyCardNumberCredit() {
         var payForm = mainPage.byCreditCard();
-        var emptyCardNumber = dataHelper.emptyCardNumberInfo();
+        var emptyCardNumber = DataHelper.emptyCardNumberInfo();
         payForm.fillForm(emptyCardNumber);
         payForm.checkingWrongFormat();
     }
@@ -94,7 +93,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Letters Card Number / CREDIT")
     void checkingLettersCardNumberCredit() {
         var payForm = mainPage.byCreditCard();
-        var lettersCardNumber = dataHelper.lettersCardNumberInfo();
+        var lettersCardNumber = DataHelper.lettersCardNumberInfo();
         payForm.fillForm(lettersCardNumber);
         payForm.checkingWrongFormat();
     }
@@ -103,7 +102,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Negative Month / CREDIT")
     void checkingNegativeMonthCredit() {
         var payForm = mainPage.byCreditCard();
-        var invalidMonth = dataHelper.invalidMonthInfo();
+        var invalidMonth = DataHelper.invalidMonthInfo();
         payForm.fillForm(invalidMonth);
         payForm.checkingInvalidExpirationDate();
     }
@@ -112,7 +111,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Negative Month Zero / CREDIT")
     void checkingInvalidMonthZeroCredit() {
         var payForm = mainPage.byCreditCard();
-        var invalidMonth = dataHelper.invalidMonthZeroInfo();
+        var invalidMonth = DataHelper.invalidMonthZeroInfo();
         payForm.fillForm(invalidMonth);
         payForm.checkingInvalidExpirationDate();
     }
@@ -121,7 +120,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Empty Month / CREDIT")
     void checkingEmptyMonthCredit() {
         var payForm = mainPage.byCreditCard();
-        var emptyMonth = dataHelper.emptyMonthInfo();
+        var emptyMonth = DataHelper.emptyMonthInfo();
         payForm.fillForm(emptyMonth);
         payForm.checkingWrongFormat();
     }
@@ -130,7 +129,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Expired Year Date / CREDIT")
     void checkingExpiredYearDateCredit() {
         var payForm = mainPage.byCreditCard();
-        var expiredYear = dataHelper.expiredYearInfo();
+        var expiredYear = DataHelper.expiredYearInfo();
         payForm.fillForm(expiredYear);
         payForm.checkingCardExpired();
     }
@@ -139,7 +138,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Empty Year Date / CREDIT")
     void checkingEmptyYearDateCredit() {
         var payForm = mainPage.byCreditCard();
-        var emptyYear = dataHelper.emptyYearInfo();
+        var emptyYear = DataHelper.emptyYearInfo();
         payForm.fillForm(emptyYear);
         payForm.checkingWrongFormat();
     }
@@ -148,7 +147,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Year One Digit / CREDIT")
     void checkingYearDateOneDigitCredit() {
         var payForm = mainPage.byCreditCard();
-        var yearOneDigit = dataHelper.yearInfoOneDigit();
+        var yearOneDigit = DataHelper.yearInfoOneDigit();
         payForm.fillForm(yearOneDigit);
         payForm.checkingWrongFormat();
     }
@@ -157,7 +156,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Incorrectly Expiration Date / CREDIT")
     void checkingIncorrectlyExpirationDateCredit() {
         var payForm = mainPage.byCreditCard();
-        var invalidYear = dataHelper.invalidYearInfo();
+        var invalidYear = DataHelper.invalidYearInfo();
         payForm.fillForm(invalidYear);
         payForm.checkingInvalidExpirationDate();
     }
@@ -166,7 +165,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Owners Data In Russian / CREDIT")
     void checkingOwnersDataInRussianCredit() {
         var payForm = mainPage.byCreditCard();
-        var invalidOwner = dataHelper.invalidOwnerInfo();
+        var invalidOwner = DataHelper.invalidOwnerInfo();
         payForm.fillForm(invalidOwner);
         payForm.checkingWrongFormat();
     }
@@ -175,7 +174,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Empty Owners / CREDIT")
     void checkingEmptyOwnersCredit() {
         var payForm = mainPage.byCreditCard();
-        var emptyOwner = dataHelper.emptyOwnerInfo();
+        var emptyOwner = DataHelper.emptyOwnerInfo();
         payForm.fillForm(emptyOwner);
         payForm.checkingRequiredField();
     }
@@ -184,7 +183,7 @@ public class CreditTests {
     @DisplayName("Test: Checking Empty Cvv / CREDIT")
     void checkingEmptyCvvCredit() {
         var payForm = mainPage.byCreditCard();
-        var emptyCvv = dataHelper.emptyCvvInfo();
+        var emptyCvv = DataHelper.emptyCvvInfo();
         payForm.fillForm(emptyCvv);
         payForm.checkingWrongFormatAll();
     }
@@ -193,8 +192,8 @@ public class CreditTests {
     @DisplayName("Test: Checking Invalid Cvv / CREDIT")
     void checkingInvalidCvvCredit() {
         var payForm = mainPage.byCreditCard();
-        var emptyCvv = dataHelper.invalidCvvInfo();
-        payForm.fillForm(emptyCvv);
+        var invalidCvv = DataHelper.invalidCvvInfo();
+        payForm.fillForm(invalidCvv);
         payForm.checkingWrongFormat();
     }
 

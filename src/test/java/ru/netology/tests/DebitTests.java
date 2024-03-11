@@ -14,13 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DebitTests {
 
     public final Main mainPage = new Main();
-    public final DataHelper dataHelper = new DataHelper();
     public final String url = "http://localhost:8080";
 
     @BeforeEach
     void openForTests() {
-       System.setProperty("selenide.headless", "true");
-       open(url);
+        System.setProperty("selenide.headless", "true");
+        open(url);
     }
 
     @BeforeAll
@@ -45,7 +44,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Approved Card / DEBIT")
     void checkingApprovedCardDebit() {
         var payForm = mainPage.byDebitCard();
-        var approvedInfo = dataHelper.approvedCardInfo();
+        var approvedInfo = DataHelper.approvedCardInfo();
         payForm.fillFormAndSend(approvedInfo);
         payForm.checkingOperationIsApproved();
         var dataSQLPayment = SQLHelper.getDebitInfo().getStatus();
@@ -56,7 +55,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Declined Card / DEBIT")
     void checkingDeclinedCardDebit() {
         var payForm = mainPage.byDebitCard();
-        var declinedInfo = dataHelper.declinedCardInfo();
+        var declinedInfo = DataHelper.declinedCardInfo();
         payForm.fillFormAndSend(declinedInfo);
         payForm.checkingErrorNotification();
         var dataSQLPayment = SQLHelper.getDebitInfo().getStatus();
@@ -67,7 +66,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Purchase In Database / DEBIT")
     void checkingPurchaseInDatabaseDebit() {
         var payForm = mainPage.byDebitCard();
-        var approvedInfo = dataHelper.approvedCardInfo();
+        var approvedInfo = DataHelper.approvedCardInfo();
         payForm.fillFormAndSend(approvedInfo);
         payForm.checkingOperationIsApproved();
         var dataSQLPayAmount = SQLHelper.getDebitInfo();
@@ -80,7 +79,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Invalid Card Number / DEBIT")
     void checkingInvalidCardNumberDebit() {
         var payForm = mainPage.byDebitCard();
-        var invalidCardNumber = dataHelper.invalidCardNumberInfo();
+        var invalidCardNumber = DataHelper.invalidCardNumberInfo();
         payForm.fillFormAndSend(invalidCardNumber);
         payForm.checkingErrorNotification();
     }
@@ -89,7 +88,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Short Card Number / DEBIT")
     void checkingShortCardNumberDebit() {
         var payForm = mainPage.byDebitCard();
-        var shortCardNumber = dataHelper.shortCardNumberInfo();
+        var shortCardNumber = DataHelper.shortCardNumberInfo();
         payForm.fillForm(shortCardNumber);
         payForm.checkingWrongFormat();
     }
@@ -98,7 +97,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Empty Card Number / DEBIT")
     void checkingEmptyCardNumberDebit() {
         var payForm = mainPage.byDebitCard();
-        var emptyCardNumber = dataHelper.emptyCardNumberInfo();
+        var emptyCardNumber = DataHelper.emptyCardNumberInfo();
         payForm.fillForm(emptyCardNumber);
         payForm.checkingWrongFormat();
     }
@@ -106,8 +105,8 @@ public class DebitTests {
     @Test
     @DisplayName("Test: Checking Letters Card Number / DEBIT")
     void checkingLettersCardNumberDebit() {
-        var payForm = mainPage.byCreditCard();
-        var lettersCardNumber = dataHelper.lettersCardNumberInfo();
+        var payForm = mainPage.byDebitCard();
+        var lettersCardNumber = DataHelper.lettersCardNumberInfo();
         payForm.fillForm(lettersCardNumber);
         payForm.checkingWrongFormat();
     }
@@ -116,7 +115,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Negative Month / DEBIT")
     void checkingNegativeMonthDebit() {
         var payForm = mainPage.byDebitCard();
-        var invalidMonth = dataHelper.invalidMonthInfo();
+        var invalidMonth = DataHelper.invalidMonthInfo();
         payForm.fillForm(invalidMonth);
         payForm.checkingInvalidExpirationDate();
     }
@@ -125,7 +124,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Negative Month Zero / DEBIT")
     void checkingInvalidMonthZeroDebit() {
         var payForm = mainPage.byDebitCard();
-        var invalidMonth = dataHelper.invalidMonthZeroInfo();
+        var invalidMonth = DataHelper.invalidMonthZeroInfo();
         payForm.fillForm(invalidMonth);
         payForm.checkingInvalidExpirationDate();
     }
@@ -134,7 +133,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Empty Month / DEBIT")
     void checkingEmptyMonthDebit() {
         var payForm = mainPage.byDebitCard();
-        var emptyMonth = dataHelper.emptyMonthInfo();
+        var emptyMonth = DataHelper.emptyMonthInfo();
         payForm.fillForm(emptyMonth);
         payForm.checkingWrongFormat();
     }
@@ -143,7 +142,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Expired Year Date / DEBIT")
     void checkingExpiredYearDateDebit() {
         var payForm = mainPage.byDebitCard();
-        var expiredYear = dataHelper.expiredYearInfo();
+        var expiredYear = DataHelper.expiredYearInfo();
         payForm.fillForm(expiredYear);
         payForm.checkingCardExpired();
     }
@@ -152,7 +151,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Empty Year Date / DEBIT")
     void checkingEmptyYearDateDebit() {
         var payForm = mainPage.byDebitCard();
-        var emptyYear = dataHelper.emptyYearInfo();
+        var emptyYear = DataHelper.emptyYearInfo();
         payForm.fillForm(emptyYear);
         payForm.checkingWrongFormat();
     }
@@ -161,7 +160,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Year One Digit / DEBIT")
     void checkingYearDateOneDigitDebit() {
         var payForm = mainPage.byDebitCard();
-        var yearOneDigit = dataHelper.yearInfoOneDigit();
+        var yearOneDigit = DataHelper.yearInfoOneDigit();
         payForm.fillForm(yearOneDigit);
         payForm.checkingWrongFormat();
     }
@@ -170,7 +169,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Incorrectly Expiration Date / DEBIT")
     void checkingIncorrectlyExpirationDateDebit() {
         var payForm = mainPage.byDebitCard();
-        var invalidYear = dataHelper.invalidYearInfo();
+        var invalidYear = DataHelper.invalidYearInfo();
         payForm.fillForm(invalidYear);
         payForm.checkingInvalidExpirationDate();
     }
@@ -179,7 +178,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Owners Data In Russian / DEBIT")
     void checkingOwnersDataInRussianDebit() {
         var payForm = mainPage.byDebitCard();
-        var invalidOwner = dataHelper.invalidOwnerInfo();
+        var invalidOwner = DataHelper.invalidOwnerInfo();
         payForm.fillForm(invalidOwner);
         payForm.checkingWrongFormat();
     }
@@ -188,7 +187,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Empty Owners / DEBIT")
     void checkingEmptyOwnersDebit() {
         var payForm = mainPage.byDebitCard();
-        var emptyOwner = dataHelper.emptyOwnerInfo();
+        var emptyOwner = DataHelper.emptyOwnerInfo();
         payForm.fillForm(emptyOwner);
         payForm.checkingRequiredField();
     }
@@ -197,7 +196,7 @@ public class DebitTests {
     @DisplayName("Test: Checking Empty Cvv / DEBIT")
     void checkingEmptyCvvDebit() {
         var payForm = mainPage.byDebitCard();
-        var emptyCvv = dataHelper.emptyCvvInfo();
+        var emptyCvv = DataHelper.emptyCvvInfo();
         payForm.fillForm(emptyCvv);
         payForm.checkingWrongFormatAll();
     }
@@ -206,11 +205,9 @@ public class DebitTests {
     @DisplayName("Test: Checking Invalid Cvv / DEBIT")
     void checkingInvalidCvvDebit() {
         var payForm = mainPage.byDebitCard();
-        var emptyCvv = dataHelper.invalidCvvInfo();
+        var emptyCvv = DataHelper.invalidCvvInfo();
         payForm.fillForm(emptyCvv);
         payForm.checkingWrongFormat();
     }
-
-
 
 }

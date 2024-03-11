@@ -20,7 +20,7 @@ public class SQLHelper {
     @SneakyThrows(SQLException.class)
     public static Debit getDebitInfo() {
         QueryRunner runner = new QueryRunner();
-        String query = "SELECT * FROM payment_entity";
+        String query = "SELECT * FROM payment_entity WHERE created IN (SELECT MAX(created) FROM payment_entity)";
         try (Connection connect = startConnection()) {
             return runner.query(connect, query, new BeanHandler<>(Debit.class));
         }
@@ -29,7 +29,7 @@ public class SQLHelper {
     @SneakyThrows(SQLException.class)
     public static Credit getCreditInfo() {
         QueryRunner runner = new QueryRunner();
-        String query = "SELECT * FROM credit_request_entity";
+        String query = "SELECT * FROM credit_request_entity WHERE created IN (SELECT MAX(created) FROM credit_request_entity)";
         try (Connection connect = startConnection()) {
             return runner.query(connect, query, new BeanHandler<>(Credit.class));
         }
